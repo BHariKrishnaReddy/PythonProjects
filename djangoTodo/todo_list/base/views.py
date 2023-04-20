@@ -37,7 +37,7 @@ class RegisterPage(FormView):
     def get(self,*args,**kwargs):
         if self.request.user.is_authenticated:
             return redirect('tasks')
-        return super(RegisterPage,self).get()
+        return super(RegisterPage,self).get(*args,**kwargs)
 
 #class based views
 class TaskList(LoginRequiredMixin,ListView):
@@ -52,9 +52,8 @@ class TaskList(LoginRequiredMixin,ListView):
 
         search_inp = self.request.GET.get('search-area') or ''
         if search_inp:
-            context['tasks'] = context['tasks'].filter(title_icontains=search_inp)
-
-
+            context['tasks'] = context['tasks'].filter(title__icontains=search_inp)
+        context['search_inp'] = search_inp 
         return context
 
 class TaskDetail(LoginRequiredMixin,DetailView):

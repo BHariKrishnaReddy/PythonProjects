@@ -1,9 +1,28 @@
-<h3>login</h3>
+{% extends 'base/main.html' %}
+{% block content %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Login" />
-</form>
+<div class="header-bar">
+    <h1>Login</h1>
+</div>
 
-<p>New user ?<a href="{% url 'register' %}">Register</a> </p>
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="button" type="submit" value="Login">
+    </form>
+
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p> <br>
+    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+        <a href="https://www.linkedin.com/in/bharikrishnareddy12aug1999/">LinkedIn</a> ,
+        <a href="https://github.com/BHariKrishnaReddy">Github</a> ,
+        <a href="https://docs.google.com/document/d/1o3MT_adbzqdGbOu3xVlamQRcY5cdBW47fbCl97myaAc/edit?usp=sharing">Resume</a>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}
